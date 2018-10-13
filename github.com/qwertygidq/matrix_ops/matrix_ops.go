@@ -7,7 +7,7 @@ import (
 
 type Matrix [][]float64
 
-func CreateEmptyMatrix(rows, cols int) Matrix {
+func CreateEmptyMatrix(rows, cols int) Matrix { // TODO: check for valid rows, cols
 	var mat Matrix = make(Matrix, rows)
 	for i := 0; i < rows; i++ {
 		mat[i] = make([]float64, cols)
@@ -23,6 +23,15 @@ func CopyMatrix(mat Matrix) Matrix {
 	}
 
 	return new_mat
+}
+
+func CreateIdentityMatrix(size int) Matrix {
+	var mat Matrix = CreateEmptyMatrix(size, size)
+	for row_k := range mat {
+		mat[row_k][row_k] = 1
+	}
+
+	return mat
 }
 
 func CheckMatrix(mat Matrix) bool {
